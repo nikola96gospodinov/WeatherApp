@@ -22,22 +22,14 @@ app.use(express.static(publicDirectoryPath))
 
 app.get('', (req, res) => {
     res.render('index', {
-        title: 'Weather',
+        title: 'Weather App',
         name: 'Nikola Gospodinov'
     })
 })
 
 app.get('/about', (req, res) => {
     res.render('about', {
-        title: 'About Me',
-        name: 'Nikola Gospodinov'
-    })
-})
-
-app.get('/help', (req, res) => {
-    res.render('help', {
-        helpText: 'This is some helpful text.',
-        title: 'Help',
+        title: 'About',
         name: 'Nikola Gospodinov'
     })
 })
@@ -45,7 +37,7 @@ app.get('/help', (req, res) => {
 app.get('/weather', (req, res) => {
     if (!req.query.address) {
         return res.send({
-            error: 'You must provide an address!'
+            error: 'You must provide a location!'
         })
     }
 
@@ -68,27 +60,6 @@ app.get('/weather', (req, res) => {
     })
 })
 
-app.get('/products', (req, res) => {
-    if (!req.query.search) {
-        return res.send({
-            error: 'You must provide a search term'
-        })
-    }
-
-    console.log(req.query.search)
-    res.send({
-        products: []
-    })
-})
-
-app.get('/help/*', (req, res) => {
-    res.render('404', {
-        title: '404',
-        name: 'Nikola Gospodinov',
-        errorMessage: 'Help article not found.'
-    })
-})
-
 app.get('*', (req, res) => {
     res.render('404', {
         title: '404',
@@ -98,5 +69,5 @@ app.get('*', (req, res) => {
 })
 
 app.listen(port, () => {
-    console.log('Server is up on port ' + port)
+    console.log('Server is up on port .' + port)
 })

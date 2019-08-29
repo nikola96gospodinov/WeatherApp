@@ -1,55 +1,418 @@
-body {
-    color: #333333;
-    font-family: arial;
-    max-width: 650px;
-    margin: 0 auto;
-    padding: 0 16px;
-
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh
-}
-
-.main-content {
-    flex-grow: 1;
-}
-
-footer {
-    color: #888888;
-    border-top: 1px solid #eeeeee;
-    margin-top: 16px;
-    padding: 16px 0;
-}
+* {
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.4;
+    background: #eee;
+  }
+  
+  .container {
+    width:75%;
+    margin:auto;
+    overflow: hidden;
+  }
+  
+  a {
+    text-decoration: none;
+  }
 
 header {
-    margin-top: 16px;
-    margin-bottom: 48px;
+    height: 8vh;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    background: linear-gradient(rgb(72, 99, 160), rgb(43, 84, 126));
 }
 
-h1 {
-    font-size: 64px;
-    margin-bottom: 16px;
+.header-div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-logo {
+    width: 9rem;
 }
 
 header a {
-    color: #888888;
-    margin-right: 16px;
+    color: #eee;
+    margin-left: 1rem;
     text-decoration: none;
 }
 
-.portrait {
-    width: 250px;
+footer {
+    background: linear-gradient(rgb(72, 99, 160), rgb(43, 84, 126));;
+    color: #eee;
+    border: none;
+    height: 15vh;
+}
+
+.footer-div {
+    border-top: .5rem solid #eee;
+    border-radius: .25rem;
+    padding-top: 2rem;
+}
+
+.main-content {
+    min-height: 75vh;
+    background: url(../img/people-2591874_1920.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 input {
-    border: 1px solid #cccccc;
-    padding: 8px;
+    border: 1px solid #ccc;
+    padding: .75rem .9rem;
+    border-radius: .3rem;
+    font-size: 1rem;
+}
+
+input:focus {
+    border: 1px solid #039be5;
+    outline: none;
+}
+
+form {
+  display: inline-block;
+    text-align: left;
+    padding: 2.5rem 1.5rem;
+    border: 1px #aaa solid;
+    border-radius: 4px;
+    margin-top: 2.5rem;
+    background: rgba(238, 238, 238, 0.65);
 }
 
 button {
     cursor: pointer;
-    border: 1px solid #888888;
-    background: #888888;
-    color: white;
-    padding: 8px;
+    border: 1px solid #333;
+    background: linear-gradient(#333, #222);
+    color: #eee;
+    padding: .75rem 2rem;
+    border-radius: .3rem;
+    font-size: 1rem;
+    margin-left: .25rem;
+}
+
+.label-search {
+  font-size: .9rem;
+  color: #666;
+  margin-bottom: -.9rem;
+}
+
+.loader {
+    display: none;
+    font-size: 10px;
+    margin: 3rem auto;
+    text-indent: -9999em;
+    width: 11em;
+    height: 11em;
+    border-radius: 50%;
+    background: #222225;
+    background: -moz-linear-gradient(left, #222225 10%, rgba(34,34,37, 0) 42%);
+    background: -webkit-linear-gradient(left, #222225 10%, rgba(34,34,37, 0) 42%);
+    background: -o-linear-gradient(left, #222225 10%, rgba(34,34,37, 0) 42%);
+    background: -ms-linear-gradient(left, #222225 10%, rgba(34,34,37, 0) 42%);
+    background: linear-gradient(to right, #222225 10%, rgba(34,34,37, 0) 42%);
+    position: relative;
+    -webkit-animation: load3 1.4s infinite linear;
+    animation: load3 1.4s infinite linear;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+  .loader:before {
+    width: 50%;
+    height: 50%;
+    background: #222225;
+    border-radius: 100% 0 0 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: '';
+  }
+  .loader:after {
+    background: #eeeeee;
+    width: 75%;
+    height: 75%;
+    border-radius: 50%;
+    content: '';
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+  @-webkit-keyframes load3 {
+    0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes load3 {
+    0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+
+  .hero-main {
+      color: #222;
+      font-size: 3rem;
+      margin-top: 8rem;
+  }
+
+  .hero-secondary {
+      color: #333;
+      font-size: 1.9rem;
+      text-transform: uppercase;
+      letter-spacing: .22rem;
+      margin-top: -.5rem;
+  }
+
+  #weather-report {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    display: none;
+  }
+
+  #weather-report-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  #weather-report-grid-left {
+    text-align: center;
+  }
+
+  #weather-report-grid-right {
+    text-align: left;
+  }
+
+  #weather-icon {
+    width: 24rem;
+    margin-top: .5rem;
+  }
+
+  #summary, #current-conditions {
+    font-size: 1.2rem;
+    color: #444;
+    margin-top: .5rem;
+  }
+
+  #current-temperature {
+    font-size: 3.5rem;
+    color: #222;
+  }
+   
+  #message-1 {
+    color: #222;
+    font-size: 3rem;
+    font-weight: 600;
+  }
+
+#loading {
+  text-align: center;
+  color: #222;
+  font-size: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+#rain-prob, #min-max-temp, #wind {
+  margin-top: .5rem;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+#rain-prob-label, #min-max-temp-label, #wind-label {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #222;
+}
+
+#time-date {
+  margin-bottom: 2rem;
+}
+
+#message-2 {
+  color: #333;
+  font-size: 1.6rem;
+  margin-bottom: .4rem;
+}
+
+#your-location {
+  color: #333;
+  margin-top: 1rem;
+  font-size: .8rem;
+  margin-bottom: -.2rem;
+}
+
+#time-date {
+  color: #222;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.about-page {
+  min-height: 75vh;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-gap: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.about-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.about-grid-description, .about-grid-2-description {
+  display: flex;
+  flex-wrap: wrap;
+  background: #fff;
+  border-radius: 3px;
+  padding: 2rem;
+  align-content: center;
+}
+
+.about-grid-links {
+  background-image: linear-gradient(rgba(255, 255, 255, .7), rgba(255, 255, 255, .8)), url(../img/typewriter-2306479_1280.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 2rem;
+  border-radius: 3px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.cv {
+  background-image: linear-gradient(rgba(255, 255, 255, .7), rgba(255, 255, 255, .8)), url(../img/writing-1149962_1280.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 3px;
+  padding: 3rem 2rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.cv a, .projects a {
+  display: block;
+  padding: 1rem;
+  color: #fff;
+  background: #333;
+  font-size: 1.2rem;
+  border: 2px solid #333;
+  font-weight: bold;
+  cursor: pointer;
+  width: 50%;
+  text-align: center;
+}
+
+.cv a:hover, .projects a:hover {
+  background: #fff;
+  color: #333;
+  border: 2px solid #333;
+}
+
+.about-page h1 {
+  font-size: 1.8rem;
+  color: #222;
+}
+
+.about-page p {
+  font-size: 1.1rem;
+  color: #333;
+  line-height: 1.5rem;
+  margin-top: .5rem;
+}
+
+.fab {
+  color: #fff;
+  margin-top: .5rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin-right: .3rem;
+  padding: .7rem;
+  background: #333;
+  border-radius: 10rem;
+  border: solid 2px #333;
+}
+
+.fab:hover {
+  color: #333;
+  background: #fff;
+  border: solid 2px #333;
+}
+
+.about-page h3 {
+  margin-top: -.3rem;
+  font-size: 1.2rem;
+  color: #333;
+  letter-spacing: 1.8px;
+}
+
+.about-grid-links a {
+  display: block;
+  margin-top: 1.5rem;
+  padding: 1rem;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: bold;
+  width: 50%;
+  color: #fff;
+  background: #333;
+  cursor: pointer;
+  border: 2px solid #333;
+}
+
+.about-grid-links a:hover {
+  border: 2px solid #333;
+  background: #fff;
+  color: #333;
+}
+
+.projects {
+  background-image: linear-gradient(rgba(255, 255, 255, .7), rgba(255, 255, 255, .8)), url(../img/student-849825_1280.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 3px;
+  padding: 3rem 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.error {
+  text-align: center;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  font-size: 3rem;
+  color: #222;
+  font-weight: bold;
 }

@@ -6,25 +6,56 @@
     <title>Weather</title>
     <link rel="icon" href="/img/weather.png">
     <link rel="stylesheet" href="/css/styles.css">
+    <script src="https://kit.fontawesome.com/2c23733e72.js"></script>
 </head>
 
 <body>
+    {{>header}}
+
     <div class="main-content">
-        {{>header}}
-
-        <p>Use this site to get your weather!</p>
-
-        <form>
-            <input placeholder="Location">
-            <button>Search</button>
-        </form>
-
-        <p id="message-1"></p>
-        <p id="message-2"></p>
+        <div class="hero-header">
+            <div class="container">
+                <h1 class="hero-main">Get your weather</h1>
+                <h2 class="hero-secondary">Anytime. Anywhere.</h2>
+                <form>
+                    <p class="label-search">Enter your location</p>
+                    <br/>
+                    <input placeholder="e.g. Bristol">
+                    <button>Search</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="container" id="weather-report">
+        <div class="loader" id="loader"></div>
+        <p id="loading"></p>
+        <div id="weather-report-grid">
+            <div id="weather-report-grid-left">
+                <p id="current-conditions">Current Conditions</p>
+                <canvas id="weather-icon"></canvas>
+                <p id="summary"></p>
+                <p id="current-temperature"></p>
+            </div>
+            <div id="weather-report-grid-right">
+                <p id="your-location">Your Location</p>
+                <h1 id="message-1"></h1>
+                <p id="time-date"></p>
+                <p id="message-2"></p>
+                <label id="rain-prob-label"></label>
+                <label id="rain-prob"></label>
+                <br>
+                <label id="min-max-temp-label"></label>
+                <label id="min-max-temp"></label>
+                <br>
+                <label id="wind-label"></label>
+                <label id="wind"></label>
+            </div>
+        </div>
     </div>
 
     {{>footer}}
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="/js/skycons.js"></script>
     <script src="/js/app.js"></script>
 </body>
 

@@ -6,12 +6,45 @@
     <title>About</title>
     <link rel="icon" href="/img/weather.png">
     <link rel="stylesheet" href="/css/styles.css">
+    <script src="https://kit.fontawesome.com/2c23733e72.js"></script>
 </head>
 
 <body>
-    <div class="main-content">
-        {{>header}}
-        <img class="portrait" src="/img/robot.png">
+    {{>header}}
+
+    <div class="container about-page">
+        <div class="about-grid">
+            <div class="about-grid-description">
+                <h1>About the app</h1>
+                <p>This app was inspired by a course on Udemy on <b>Node.js</b> as I took the idea developed it and made it my own.
+                    To get the relevant data for the weather I have used the <b>Dark Sky API</b> and <b>Mapbox API</b>.
+                    In terms of technologies <b>Node.js</b> and <b>Express.js</b> have been used for the back-end and vanilla <b>JavaScript</b> and <b>CSS</b> for the font-end. 
+                    There are a couple of updates planned for the next couple of weeks some of which include a detailed forecast for the week ahead and rain probability hour by hour over the next couple of hours.
+                </p>
+            </div>
+            <div class="about-grid-links">
+                <h1>Get Documentation</h1>
+                <h3>Including older versinos</h3>
+                <a>Documentation</a>
+            </div>
+        </div>
+        <div class="about-grid-2">
+            <div class="about-grid-2-links">
+                <div class="cv">
+                    <a>Get CV</a>
+                </div>
+                <div class="projects">
+                    <a>See projects</a>
+                </div>
+            </div>
+            <div class="about-grid-2-description">
+                <h1>About me</h1>
+                <p>If you want to see more of my work have a look at some of my other projects.
+                    You can also get a copy of my CV if you are interested. You can also connect on LinkedIn and check out some of the documentation of my projects on GitHub.
+                </p>
+                <a><i class="fab fa-github"></i></a> <a><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
     </div>
     
     {{>footer}}
