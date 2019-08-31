@@ -416,3 +416,95 @@ button {
   color: #222;
   font-weight: bold;
 }
+
+@media (max-width: 900px) {
+  .container {
+    width: 90%;
+  }
+
+  header {
+    height: 5vh;
+  }
+
+  footer {
+    height: 10vh;
+  }
+
+  .cv a, .projects a {
+    font-size: 1rem;
+    width: 65%;
+  }
+
+  .about-grid {
+    display: block;
+  }
+
+  .about-grid-links {
+    margin-top: 1rem;
+    flex-wrap: nowrap;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 600px) {
+  header {
+    height: 7vh;
+  }
+
+  footer {
+    height: 12vh;
+  }
+
+  header a {
+    margin-left: .5rem;
+    font-size: .9rem;
+  }
+
+  .hero-main {
+    font-size: 2.4rem;
+  }
+
+  .hero-secondary {
+    font-size: 1.4rem;
+  }
+
+  button {
+    margin-left: 0;
+    margin-top: .9rem;
+  }
+
+  #weather-report-grid {
+    display: block;
+  }
+
+  #weather-icon {
+    width: 18rem;
+  }
+
+  .about-grid-2 {
+    display: block;
+  }
+
+  .about-grid-2-description {
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 400px) {
+
+  header {
+    height: 5vh;
+  }
+
+  .header-logo {
+    width: 6rem;
+  }
+
+  .about-page h1 {
+    font-size: 1.6rem;
+  }
+
+  .about-page h3 {
+    font-size: 1rem;
+  }
+}

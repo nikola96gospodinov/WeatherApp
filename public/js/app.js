@@ -1,22 +1,13 @@
+// Search form
 const weatherForm = document.querySelector('form')
 const search = document.querySelector('input')
-const messageOne = document.querySelector('#message-1')
-const messageTwo = document.querySelector('#message-2')
-const rainProbability = document.querySelector('#rain-prob')
-const rainProbabilityLabel = document.querySelector('#rain-prob-label')
-const minMaxTemperature = document.querySelector('#min-max-temp')
-const minMaxTemperatureLabel = document.querySelector('#min-max-temp-label')
-const timeDate = document.querySelector('#time-date')
+// Section
+const weatherReport = document.querySelector('#weather-report')
+// Loading
 const loadingText = document.querySelector('#loading')
 const loader = document.querySelector('#loader')
-const weatherReport = document.querySelector('#weather-report')
-const weatherIcon = document.querySelector('#weather-icon')
+// left hand side of the grid in order
 const currentConditions = document.querySelector('#current-conditions')
-const currentSummary = document.querySelector('#summary')
-const wind = document.querySelector('#wind')
-const windLabel = document.querySelector('#wind-label')
-const yourLocation = document.querySelector('#your-location')
-const currentTemperature = document.querySelector('#current-temperature')
 const icon = new Skycons({
     'monochrome': false,
     'colors': {
@@ -27,59 +18,80 @@ const icon = new Skycons({
         'moon': '#494960'
     }
 })
+const weatherIcon = document.querySelector('#weather-icon')
+const currentSummary = document.querySelector('#summary')
+const currentTemperature = document.querySelector('#current-temperature')
+// right hand side in order
+const yourLocation = document.querySelector('#your-location')
+const city = document.querySelector('#city')
+const timeDate = document.querySelector('#time-date')
+const dailySummary = document.querySelector('#daily-summary')
+const rainProbabilityLabel = document.querySelector('#rain-prob-label')
+const rainProbability = document.querySelector('#rain-prob')
+const minMaxTemperatureLabel = document.querySelector('#min-max-temp-label')
+const minMaxTemperature = document.querySelector('#min-max-temp')
+const windLabel = document.querySelector('#wind-label')
+const wind = document.querySelector('#wind')
 
 weatherForm.addEventListener('submit', (e) => {
     e.preventDefault()
 
     const location = search.value
+    // Section
     weatherReport.style.display = 'block'
+    // Loading 
     loader.style.display = 'block'
     loadingText.textContent = 'Loading...'
-    messageOne.textContent = ''
-    messageTwo.textContent = ''
-    rainProbability.textContent = ''
-    rainProbabilityLabel.textContent = ''
-    minMaxTemperature.textContent = ''
-    minMaxTemperatureLabel.textContent = ''
+    // left hand side of the grid in order
+    currentConditions.textContent = ''
+    weatherIcon.style.display = 'none'
     currentSummary.textContent = ''
     currentTemperature.textContent = ''
-    timeDate.textContent = ''
-    currentConditions.textContent = ''
-    wind.textContent = ''
-    windLabel.textContent = ''
+    // right hand side of the grid in order
     yourLocation.textContent = ''
-    weatherIcon.style.display = 'none'
+    city.textContent = ''
+    timeDate.textContent = ''
+    dailySummary.textContent = ''
+    rainProbabilityLabel.textContent = ''
+    rainProbability.textContent = ''
+    minMaxTemperatureLabel.textContent = ''
+    minMaxTemperature.textContent = ''
+    windLabel.textContent = ''
+    wind.textContent = ''
     window.scrollTo(0,document.body.scrollHeight);
 
     fetch('/weather?address=' + location).then((response) => {
     response.json().then((data) => {
         if (data.error) {
             loader.style.display = 'none'
-            messageOne.textContent = ''
-            messageTwo.textContent = ''
+            city.textContent = ''
+            dailySummary.textContent = ''
             loadingText.textContent = data.error
         } else {
+            // Loader
             loader.style.display = 'none'
             loadingText.textContent = ''
-            messageOne.textContent = data.location.split(",").shift()
-            messageTwo.textContent = data.forecast.daily.data[0].summary
-            rainProbability.textContent = data.forecast.currently.precipProbability + '%'
-            rainProbabilityLabel.textContent = 'Rain Probability: '
-            minMaxTemperature.textContent = Math.round(parseFloat(data.forecast.daily.data[0].temperatureHigh)) + '°/' + Math.round(parseFloat(data.forecast.daily.data[0].temperatureLow)) + '°'
-            minMaxTemperatureLabel.textContent = 'Temperature: '
-            let currentTime = parseInt(data.forecast.currently.time)
-            timeDate.textContent = moment.unix(currentTime).format('LLLL').split(",").shift() + ', ' + moment.unix(currentTime).format('D MMMM')
-            weatherIcon.style.display = 'inline-block'
-            currentSummary.textContent = data.forecast.currently.summary
+            // left hand side of the grid in order 
             currentConditions.textContent = 'Current Conditions'
-            windLabel.textContent = 'Wind Speed: '
-            yourLocation.textContent = 'Your Location'
-            wind.textContent = data.forecast.currently.windSpeed + ' kph'
+            weatherIcon.style.display = 'inline-block'
+            icon.set('weather-icon', data.forecast.currently.icon)
+            icon.play()
+            currentSummary.textContent = data.forecast.currently.summary
             // Convert the temperature into a whole number
             let convertedValue = Math.round(parseFloat(data.forecast.currently.temperature))   
             currentTemperature.textContent = convertedValue + '°'
-            icon.set('weather-icon', data.forecast.currently.icon)
-            icon.play()
+            // right hand side of the grid in order
+            yourLocation.textContent = 'Your Location'
+            city.textContent = data.location.split(",").shift()
+            let currentTime = parseInt(data.forecast.currently.time)
+            timeDate.textContent = moment.unix(currentTime).format('LLLL').split(",").shift() + ', ' + moment.unix(currentTime).format('D MMMM')
+            dailySummary.textContent = data.forecast.daily.data[0].summary
+            rainProbabilityLabel.textContent = 'Rain Probability: '
+            rainProbability.textContent = data.forecast.currently.precipProbability + '%'
+            minMaxTemperatureLabel.textContent = 'Temperature: '
+            minMaxTemperature.textContent = Math.round(parseFloat(data.forecast.daily.data[0].temperatureHigh)) + '°/' + Math.round(parseFloat(data.forecast.daily.data[0].temperatureLow)) + '°'
+            windLabel.textContent = 'Wind Speed: '
+            wind.textContent = data.forecast.currently.windSpeed + ' kph'
         }
     })
 })
